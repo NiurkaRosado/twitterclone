@@ -1,11 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// firebase.js (o config.js)
+import { initializeApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Tu configuración de Firebase (cópiala desde la consola de Firebase)
 const firebaseConfig = {
   apiKey: "AIzaSyD1Vb6PUVGRBHGCPBRwhHN7nGTjO7OGK8w",
   authDomain: "twitter-49524.firebaseapp.com",
@@ -16,8 +13,12 @@ const firebaseConfig = {
   measurementId: "G-C5L3J9SD57"
 };
 
-// Initialize Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
-export const auth = getAuth(app)
+const googleProvider = new GoogleAuthProvider()
+
+// Obtén la instancia de autenticación
+const auth = getAuth(app);
+
+export { auth, onAuthStateChanged, googleProvider, firebaseConfig };
