@@ -13,8 +13,8 @@ export const crearPost = async (post) => {
   return data;
 };
 
-export const obtenerPosts = async () => {
-   const posts = await supabase.from('posts').select("*")
+export const obtenerPosts = async (id) => {
+   const posts = await supabase.from('posts').select("*").eq('idUser', id)
 
    return posts
 }

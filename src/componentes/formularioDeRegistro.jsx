@@ -13,7 +13,9 @@ export default function FormularioDeRegistro(props) {
       password: ''
   })
 
+    // Obtiene la contraseña y ell correoo utilizando como identifiacdor la llave dle objeto
   const manejarElCambioDelInput = (llave, valor) => {
+    // copiamos los datos anteriores pafra que no se pierdan ...
     setUsuario({...usuario, [llave]: valor})
   }
 

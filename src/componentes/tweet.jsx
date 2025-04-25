@@ -21,22 +21,30 @@ export default function Tweet() {
       const [data] = await crearPost({
         ...notaNueva,
         name: usuarioStore.usuario.email,
+        idUser: usuarioStore.usuario.id
       });
 
       setNotas([...notas, data]);
       setNotaNueva({ post: "" });
     } catch (error) {}
   };
-
-  const obtenerNotas = async () => {
-    const { data } = await obtenerPosts();
+  //Nos ayuda a traer la informacion oo los post agreagados anteriormente a la base de datos y siempre teniendo en cneta los nuevos 
+  const obtenerNotas = async (id) => {
+   
+    const { data } = await obtenerPosts(id);
 
     setNotas(data);
   };
 
   useEffect(() => {
-    obtenerNotas();
-  }, []);
+
+    if(usuarioStore.usuario){
+      console.log('first')
+      obtenerNotas(usuarioStore.usuario.id);
+
+    }
+
+  }, [usuarioStore.usuario]);
   return (
     <div className="flex-1 border border-gray-800 max-w-xl">
       {/* Tabs */}

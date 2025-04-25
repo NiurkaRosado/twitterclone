@@ -12,12 +12,17 @@ export const Login = (props) => {
   const usuarioStore = useUsuario();
   const navegador = useRouter();
 
+   // Se detecta el cambio del imput para obtener el email 
   function getEmail(event) {
     setEmail(event.target.value);
   }
+
+  // Se detecta el cambio del imput para obtener la contraseña 
   function getPassword(event) {
     setPassword(event.target.value);
   }
+
+  //Es lo que enviamos a supabase para verificar si el usuari9o esta registrado
   async function handleSubmit(event) {
     event.preventDefault();
     if (!email || !password) {
