@@ -11,17 +11,12 @@ import { FiUser } from "react-icons/fi";
 import { TbBrandSocketIo } from "react-icons/tb";
 import { FaXTwitter } from "react-icons/fa6";
 import { useUsuario } from "@/stores/usuario";
-import { useRouter } from "next/navigation";
+import { BotonLogOut } from "./botonLogOut";
+
 
 export default function Lateral() {
   const usuarioStore = useUsuario();
-  const router = useRouter();
 
-  const logout = () => {
-    usuarioStore.limpiarUsuario();
-
-    router.push("/registrar");
-  };
   return (
     <div className="w-64 border-gray-800 p-4 md:flex flex-col hidden">
       <div className="p-2 mb-4">
@@ -60,12 +55,7 @@ export default function Lateral() {
         </button>
       </nav>
 
-      <button
-        className="mt-4 bg-white text-black font-bold py-3 px-4 rounded-full w-full"
-        onClick={() => logout()}
-      >
-        Log Out
-      </button>
+      <BotonLogOut/>
       <br />
       <br />
       <br />
