@@ -23,7 +23,7 @@ export default function Lateral() {
     router.push("/registrar");
   };
   return (
-    <div className="w-64 border-gray-800 p-4 flex flex-col lg:block">
+    <div className="w-64 border-gray-800 p-4 md:flex flex-col hidden">
       <div className="p-2 mb-4">
         <FaXTwitter color="white" size="35px" />
       </div>
