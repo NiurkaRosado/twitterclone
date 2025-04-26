@@ -5,13 +5,15 @@ import { crearPost, obtenerPosts } from "@/supabase/conexion";
 import { useEffect, useState } from "react";
 import { CiCircleList, CiImageOn } from "react-icons/ci";
 import { HiOutlineFaceSmile, HiOutlineGif } from "react-icons/hi2";
-import { IoLocationOutline } from "react-icons/io5";
+import { IoLocationOutline, IoMenu } from "react-icons/io5";
 import { LuCalendarClock } from "react-icons/lu";
 import { VscCircleSlash } from "react-icons/vsc";
+import useMobile from "@/hooks/useMobile";
 
-export default function Tweet() {
+export default function Tweet({cerrar}) {
   const usuarioStore = useUsuario();
   const [notas, setNotas] = useState([]);
+  const esCelu = useMobile();
   const [notaNueva, setNotaNueva] = useState({
     post: "",
   });
@@ -48,12 +50,23 @@ export default function Tweet() {
   return (
     <div className="flex-1 border border-gray-800 max-w-xl">
       {/* Tabs */}
+      <botonPopOver/>
       <div className="flex border-b border-gray-800">
-        <button className="flex-1 py-4 text-center font-bold border-b-4 border-[#1d9bf0] text-white">
+        {
+          esCelu ?
+          (
+            <div onClick={cerrar}>
+              <IoMenu size="30px"/>
+            </div>
+          )
+          :
+          (
+            null
+          )
+        }
+        <br />
+        <button className="flex-1 py-4 text-center font-bold border-b-1 border-[#1d9bf0] text-white">
           For you
-        </button>
-        <button className="flex-1 py-4 text-center font-bold text-gray-500 hover:bg-gray-900">
-          Following
         </button>
       </div>
 

@@ -8,7 +8,6 @@ import { IoPeopleOutline } from "react-icons/io5";
 import { CiCircleMore } from "react-icons/ci";
 import { FiMail } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
-import { TbBrandSocketIo } from "react-icons/tb";
 import { FaXTwitter } from "react-icons/fa6";
 import { useUsuario } from "@/stores/usuario";
 import { BotonLogOut } from "./botonLogOut";
@@ -18,7 +17,7 @@ export default function Lateral() {
   const usuarioStore = useUsuario();
 
   return (
-    <div className="w-64 border-gray-800 p-4 md:flex flex-col hidden">
+    <div className="w-64 border-gray-800 p-4 md:flex flex-col">
       <div className="p-2 mb-4">
         <FaXTwitter color="white" size="35px" />
       </div>
@@ -56,12 +55,9 @@ export default function Lateral() {
       </nav>
 
       <BotonLogOut/>
-      <br />
-      <br />
-      <br />
 
       {usuarioStore.usuario && (
-        <div className="mt-auto flex items-center p-3 rounded-full hover:bg-gray-700 cursor-pointer">
+        <div className="mt-2 flex items-center p-3 rounded-full hover:bg-gray-700 cursor-pointer">
           <div className="flex-shrink-0 h-10 w-10 bg-indigo-500 rounded-full flex items-center justify-center">
             <span className="text-xl">
               {usuarioStore.usuario?.email.charAt(0).toUpperCase()}

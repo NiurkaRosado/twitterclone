@@ -10,6 +10,7 @@ export function BotonLogOut(){
    
        router.push("/registrar");
      };
+     
     return(
         
         <button
