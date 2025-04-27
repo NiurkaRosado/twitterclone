@@ -9,8 +9,9 @@ import { IoLocationOutline, IoMenu } from "react-icons/io5";
 import { LuCalendarClock } from "react-icons/lu";
 import { VscCircleSlash } from "react-icons/vsc";
 import useMobile from "@/hooks/useMobile";
+import { FaXTwitter } from "react-icons/fa6";
 
-export default function Tweet({cerrar}) {
+export default function Tweet({ cerrar }) {
   const usuarioStore = useUsuario();
   const [notas, setNotas] = useState([]);
   const esCelu = useMobile();
@@ -23,51 +24,46 @@ export default function Tweet({cerrar}) {
       const [data] = await crearPost({
         ...notaNueva,
         name: usuarioStore.usuario.email,
-        idUser: usuarioStore.usuario.id
+        idUser: usuarioStore.usuario.id,
       });
 
       setNotas([...notas, data]);
       setNotaNueva({ post: "" });
     } catch (error) {}
   };
-  //Nos ayuda a traer la informacion oo los post agreagados anteriormente a la base de datos y siempre teniendo en cneta los nuevos 
+  //Nos ayuda a traer la informacion oo los post agreagados anteriormente a la base de datos y siempre teniendo en cneta los nuevos
   const obtenerNotas = async (id) => {
-   
     const { data } = await obtenerPosts(id);
 
     setNotas(data);
   };
 
   useEffect(() => {
-
-    if(usuarioStore.usuario){
-      console.log('first')
+    if (usuarioStore.usuario) {
+      console.log("first");
       obtenerNotas(usuarioStore.usuario.id);
-
     }
-
   }, [usuarioStore.usuario]);
   return (
     <div className="flex-1 border border-gray-800 max-w-xl">
       {/* Tabs */}
-      <botonPopOver/>
-      <div className="flex border-b border-gray-800">
-        {
-          esCelu ?
-          (
+      <botonPopOver />
+      <div className="flex flex-col justify-center border-b border-gray-800">
+        {esCelu ? (
+          <div className="flex flex-row m-1 justify-around">
             <div onClick={cerrar}>
-              <IoMenu size="30px"/>
+              <IoMenu size="40px" />
             </div>
-          )
-          :
-          (
-            null
-          )
-        }
-        <br />
-        <button className="flex-1 py-4 text-center font-bold border-b-1 border-[#1d9bf0] text-white">
-          For you
-        </button>
+            <div>
+              <FaXTwitter color="white" size="35px" />
+            </div>
+          </div>
+        ) : null}
+        <div>
+          <button className="flex-1 py-4 font-bold border-b-1 border-[#1d9bf0] text-white">
+            For you
+          </button>
+        </div>
       </div>
 
       {/* Compose Tweet */}

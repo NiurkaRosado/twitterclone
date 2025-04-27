@@ -4,7 +4,6 @@ import { FaXTwitter } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { useUsuario } from "@/stores/usuario";
-import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 export const Login = (props) => {
   const [email, setEmail] = useState("");
