@@ -58,7 +58,7 @@ export const Login = (props) => {
           <br />
           <div>
             <h1 className="text-2xl font-bold text-center">
-              Inicia sesiòn
+              Sign In
             </h1>
           </div>
           <br />
