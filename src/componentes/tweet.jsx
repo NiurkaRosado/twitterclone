@@ -59,11 +59,9 @@ export default function Tweet({ cerrar }) {
             </div>
           </div>
         ) : null}
-        <div>
           <button className="flex-1 py-4 font-bold border-b-1 border-[#1d9bf0] text-white">
             For you
           </button>
-        </div>
       </div>
 
       {/* Compose Tweet */}
